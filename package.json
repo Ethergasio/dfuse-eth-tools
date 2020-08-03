@@ -1,0 +1,24 @@
+{
+  "name": "dfuse-ethtx-search",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Ethergasio/dfuse-ethtx-search.git",
+  "author": "unibtc <unibtc@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node -r dotenv/config index.js"
+  },
+  "dependencies": {
+    "@dfuse/client": "^0.3.13",
+    "@koa/cors": "^3.1.0",
+    "dotenv": "^8.2.0",
+    "koa": "^2.13.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-bouncer": "^6.0.4",
+    "koa-helmet": "^5.2.0",
+    "koa-logger": "^3.2.1",
+    "koa-router": "^9.1.0",
+    "node-fetch": "^2.6.0",
+    "ws": "^7.3.1"
+  }
+}
