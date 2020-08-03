@@ -72,7 +72,8 @@ exports.validateTx = async (txid) => {
   const valid = response.data.transaction.flatCalls.every((tx) => tx.status === 'SUCCEEDED');
   dfuseClient.release();
   return valid ? 'SUCCEEDED': 'REVERTED';
-  }catch(_) {
+  }catch(e) {
+    console.error(e)
     // if txid is not yet confirmed
     return 'UNCONFIRMED';
   }
