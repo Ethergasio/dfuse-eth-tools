@@ -8,7 +8,7 @@ module.exports = {
     watch: false,
     max_memory_restart: '1G',
     log_date_format: 'YYYY-MM-DDTHH:mm:ssZ',
-    node_args: '-r dotenv/config -r app-module-path/cwd ',
+    node_args: '-r dotenv/config',
     args: '--color',
     time: true
   }]
