@@ -19,9 +19,9 @@ subscription($hash: String!) {
           from
           to
           nonce
-          gasPrice(encoding:HEX)
+          gasPrice(encoding:WEI)
           gasLimit
-          value
+          value(encoding:WEI)
           inputData
         }
         blockHeader {

@@ -1,6 +1,6 @@
 {
   "name": "dfuse-ethtx-search",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "repository": "git@github.com:Ethergasio/dfuse-ethtx-search.git",
   "author": "unibtc <unibtc@gmail.com>",

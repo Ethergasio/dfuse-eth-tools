@@ -5,11 +5,11 @@ exports.formatTx = (txobj) => {
     "blockNumber": txobj.blockHeader ? txobj.blockHeader.number : null,
     "from": txobj.transaction.from,
     "gas": utils.toHex(txobj.transaction.gasLimit),
-    "gasPrice": txobj.transaction.gasPrice,
+    "gasPrice": utils.toHex(txobj.transaction.gasPrice),
     "hash": txobj.transaction.hash,
     "input": txobj.transaction.inputData,
     "nonce": utils.toHex(txobj.transaction.nonce),
     "to": txobj.transaction.to,
-    "value": txobj.transaction.value
+    "value": utils.toHex(txobj.transaction.value)
   }
 }
