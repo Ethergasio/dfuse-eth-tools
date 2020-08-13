@@ -63,6 +63,7 @@ function txLifeCycle(vars) {
     const stream = await dfuseClient.graphql(gettransaction, message => {
       if (message.type === 'data') {
         stream.close();
+        dfuseClient.release();
         resolve(message.data);
       }
     }, vars)
@@ -78,10 +79,11 @@ exports.getTx = async (txid) => {
       operationType: "subscription"
     }
     const response = await txLifeCycle(vars)
+
     return formatTx(response.transactionLifecycle.transition)
   } catch (e) {
     console.error(e)
     // if txid is not yet confirmed
-    return 'UNCONFIRMED';
+    return 'NOT FOUND';
   }
 }
