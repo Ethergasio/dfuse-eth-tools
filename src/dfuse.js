@@ -1,8 +1,8 @@
 const { createDfuseClient } = require("@dfuse/client")
 const nodeFetch = require('node-fetch')
 const WebSocketClient = require('ws')
-const { validate } = require('./query');
-
+const { validate, gettransaction } = require('./query');
+const { formatTx } = require("./utils");
 const dfuseClient = createDfuseClient({
   apiKey: process.env.ETH_KEY,
   network: "mainnet.eth.dfuse.io",
@@ -58,5 +58,30 @@ exports.validateTx = async (txid) => {
     return 'UNCONFIRMED';
   }
 }
+function txLifeCycle(vars) {
+  return new Promise(async resolve => {
+    const stream = await dfuseClient.graphql(gettransaction, message => {
+      if (message.type === 'data') {
+        stream.close();
+        resolve(message.data);
+      }
+    }, vars)
+  })
+}
 
-
+exports.getTx = async (txid) => {
+  try {
+    const vars = {
+      variables: {
+        hash: txid
+      },
+      operationType: "subscription"
+    }
+    const response = await txLifeCycle(vars)
+    return formatTx(response.transactionLifecycle.transition)
+  } catch (e) {
+    console.error(e)
+    // if txid is not yet confirmed
+    return 'UNCONFIRMED';
+  }
+}
