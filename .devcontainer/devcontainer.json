@@ -1,0 +1,24 @@
+{
+	"name": "Devspaces",
+  "dockerFile":"Dockerfile",
+	"remoteUser": "devpod",
+	"workspaceMount": "source=${localWorkspaceFolder},target=/home/devpod/workspace,type=bind,consistency=cached",
+	"workspaceFolder": "/home/devpod/workspace",
+	"runArgs": [ "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined" ],
+
+	"extensions": [
+		"ms-vsonline.vsonline",
+		"GitHub.vscode-pull-request-github",
+		"MS-vsliveshare.vsliveshare",
+		"VisualStudioExptTeam.vscodeintellicode"
+	],
+
+
+	 "settings": {
+     "editor.formatOnSave": true,
+     "terminal.integrated.shell.linux": "/bin/bash",
+    "workbench.colorTheme": "Monokai Dimmed",
+    "workbench.startupEditor": "welcomePageInEmptyWorkbench"
+   }
+
+}
