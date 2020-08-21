@@ -1,6 +1,9 @@
 {
 	"name": "Devspaces",
-  "dockerFile":"Dockerfile",
+  "build": {
+		"dockerfile": "Dockerfile",
+		"args": { "VARIANT": "focal" }
+	},
 	"remoteUser": "devpod",
 	"workspaceMount": "source=${localWorkspaceFolder},target=/home/devpod/workspace,type=bind,consistency=cached",
 	"workspaceFolder": "/home/devpod/workspace",
