@@ -38,6 +38,14 @@ async function webSocketFactory(url, protocols = []) {
 
 exports.validateTx = async (txid) => {
   try {
+    if(process.env.ETHERSCAN == "true") {
+        const r = await fetch(`https://api.etherscan.io/api?module=transaction&action=gettxreceiptstatus&txhash=${txid}&apikey=${process.env.ETHERSCAN_API}`).then(res => res.json())
+        if(r.result.status === 1) {
+            return 'SUCCEEDED'
+        }else {
+            return 'UNCONFIRMED'
+        }
+    }
     const vars = {
       variables: {
         hash: txid
